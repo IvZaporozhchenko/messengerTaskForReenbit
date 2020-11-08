@@ -1,0 +1,6 @@
+.App {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: center;
+}
