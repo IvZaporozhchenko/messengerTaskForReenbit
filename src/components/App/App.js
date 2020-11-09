@@ -15,6 +15,7 @@ class App extends Component {
 
 		this.selectContact = this.selectContact.bind(this);
 		this.sendMessage = this.sendMessage.bind(this);
+		this.receiveMessage = this.receiveMessage.bind(this);
 	}
 
 	componentDidMount() {
@@ -159,8 +160,13 @@ class App extends Component {
 
 	//Send Message
 	sendMessage(message) {
-		let newMessage, now = new Date(), updatedContacts;
-		newMessage = {
+		if(message) {
+			let newMessage,
+				now = new Date(),
+				updatedContacts,
+				contactId;
+
+			newMessage = {
 				messageType: "outMessage",
 				messageText: message,
 				messageDate: {
@@ -172,12 +178,45 @@ class App extends Component {
 					sec: now.getSeconds()
 				}
 			};
-		updatedContacts = this.state.contacts.map(el => (el.selected === true ? Object.assign(el, {chatHistory : [...el.chatHistory, newMessage]}) : el));
+			contactId = this.state.contacts.find((contact) => {return contact.selected === true}).id;
+			updatedContacts = this.state.contacts.map(el => (el.selected === true ? Object.assign(el, {chatHistory : [...el.chatHistory, newMessage]}) : el));
 
+			this.setState({
+				contacts: updatedContacts
+			})
 
-		this.setState({
-			contacts: updatedContacts
-		})
+			this.receiveMessage(contactId)
+		}
+	}
+
+	//Receive Message
+	receiveMessage(id) {
+		fetch('https://api.chucknorris.io/jokes/random')
+			.then(res => res.json())
+			.then((data) => {
+				this.setState({inMessage: data.value})
+			})
+
+		setTimeout(()=> {
+			let respondMessage, now = new Date(), updatedContacts;
+			respondMessage = {
+				messageType: "inMessage",
+				messageText: this.state.inMessage,
+				messageDate: {
+					yy: now.getFullYear(),
+					mm: now.getMonth() + 1,
+					dd: now.getDate(),
+					hh: now.getHours(),
+					min: now.getMinutes(),
+					sec: now.getSeconds()
+				}
+			};
+			updatedContacts = this.state.contacts.map(el => (el.id === id ? Object.assign(el, {chatHistory : [...el.chatHistory, respondMessage]}) : el));
+
+			this.setState({
+				contacts: updatedContacts
+			})
+		}, 10000)
 	}
 
 

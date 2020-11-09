@@ -13,7 +13,7 @@ class ContactsList extends Component{
 				return contact;
 			}
 		});
-		
+
 		return (SORTED_AND_FILTERED_CONTACTS.map((contact) => {
 			return (
 				<div key={contact.id} onClick={this.props.selectContact.bind(this, contact.id)}>
