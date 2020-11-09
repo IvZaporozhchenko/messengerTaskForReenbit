@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/messengerTaskForReenbit/static/css/main.775b8ed3.chunk.css",
+    "main.css": "/messengerTaskForReenbit/static/css/main.882ce6d5.chunk.css",
     "main.js": "/messengerTaskForReenbit/static/js/main.c6d6e0b1.chunk.js",
     "main.js.map": "/messengerTaskForReenbit/static/js/main.c6d6e0b1.chunk.js.map",
     "runtime-main.js": "/messengerTaskForReenbit/static/js/runtime-main.dbe361bf.js",
@@ -10,14 +10,14 @@
     "static/js/3.2dc80d5e.chunk.js": "/messengerTaskForReenbit/static/js/3.2dc80d5e.chunk.js",
     "static/js/3.2dc80d5e.chunk.js.map": "/messengerTaskForReenbit/static/js/3.2dc80d5e.chunk.js.map",
     "index.html": "/messengerTaskForReenbit/index.html",
-    "static/css/main.775b8ed3.chunk.css.map": "/messengerTaskForReenbit/static/css/main.775b8ed3.chunk.css.map",
+    "static/css/main.882ce6d5.chunk.css.map": "/messengerTaskForReenbit/static/css/main.882ce6d5.chunk.css.map",
     "static/js/2.7a011ef5.chunk.js.LICENSE.txt": "/messengerTaskForReenbit/static/js/2.7a011ef5.chunk.js.LICENSE.txt",
     "static/media/avatar.23bed195.png": "/messengerTaskForReenbit/static/media/avatar.23bed195.png"
   },
   "entrypoints": [
     "static/js/runtime-main.dbe361bf.js",
     "static/js/2.7a011ef5.chunk.js",
-    "static/css/main.775b8ed3.chunk.css",
+    "static/css/main.882ce6d5.chunk.css",
     "static/js/main.c6d6e0b1.chunk.js"
   ]
 }
