@@ -19,8 +19,8 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		this.setState({
-			contacts: [
+		let contacts = JSON.parse(localStorage.getItem('contacts')) ||
+			[
 				{
 					id: uuidv4(),
 					contactName: "John",
@@ -142,8 +142,18 @@ class App extends Component {
 					]
 				}
 			]
+		;
+
+		this.setState({
+			contacts: contacts
 		})
 	}
+
+	componentDidUpdate() {
+		localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+	}
+
+
 
 	//Select Contact
 	selectContact(id) {
