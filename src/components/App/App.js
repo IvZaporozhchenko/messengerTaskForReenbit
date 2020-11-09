@@ -12,6 +12,8 @@ class App extends Component {
 		this.state = {
 			contacts: []
 		}
+
+		this.selectContact = this.selectContact.bind(this);
 	}
 
 	componentDidMount() {
@@ -134,12 +136,27 @@ class App extends Component {
 		})
 	}
 
+	//Select Contact
+	selectContact(id) {
+		this.setState({
+			contacts: this.state.contacts.map((contact) => {
+				contact.selected = false;
+				if(contact.id === id) {
+					contact.selected = !contact.selected;
+				}
+				return contact;
+			})
+		})
+	}
+
 
 	render() {
 		return (
 			<div className="App">
-				<ContactsWrap contacts={this.state.contacts} />
-				<ChatWrap />
+				<ContactsWrap contacts={this.state.contacts}
+				              selectContact={this.selectContact}
+				/>
+				<ChatWrap contacts={this.state.contacts}/>
 			</div>
 		)
 	}

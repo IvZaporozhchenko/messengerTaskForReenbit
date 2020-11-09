@@ -22,6 +22,8 @@ class ContactsWrap extends Component {
 		})
 	}
 
+
+
 	render() {
 		return (
 			<div>
@@ -29,6 +31,7 @@ class ContactsWrap extends Component {
 				<SearchContact searchContact = {this.searchContact} />
 				<ContactsList contacts={this.props.contacts}
 				              searchedContact={this.state.searchedContact}
+				              selectContact={this.props.selectContact}
 				/>
 			</div>
 		)

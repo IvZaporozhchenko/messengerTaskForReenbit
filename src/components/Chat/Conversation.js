@@ -2,11 +2,17 @@ import React, {Component} from 'react';
 
 class Conversation extends Component {
 	render() {
-		return (
-			<div>
-				<p>Conversation</p>
-			</div>
-		)
+		if(this.props.selectedContact) {
+			return (this.props.selectedContact.chatHistory.map((message) => {
+				return (<p>{message.messageText}</p>)
+			}))
+		} else {
+			return (
+				<div>
+					<p>Select someone to talk with</p>
+				</div>
+			)
+		}
 	}
 
 }

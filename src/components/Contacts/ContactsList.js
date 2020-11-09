@@ -15,7 +15,7 @@ function ContactsList(props) {
 	});
 	return (SORTED_AND_FILTERED_CONTACTS.map((contact) => {
 		return (
-			<div key={contact.id}>
+			<div key={contact.id} onClick={props.selectContact.bind(this, contact.id)}>
 				{contact.contactName}
 			</div>
 		)

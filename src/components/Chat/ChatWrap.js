@@ -6,10 +6,13 @@ import MessageInput from "./MessageInput";
 
 class ChatWrap extends Component {
 	render() {
+		//console.log(selectedContact);
 		return (
 			<div>
 				<ContactInfo />
-				<Conversation />
+				<Conversation selectedContact={this.props.contacts.find((contact) => {
+					return contact.selected === true;
+				})} />
 				<MessageInput />
 			</div>
 		)
