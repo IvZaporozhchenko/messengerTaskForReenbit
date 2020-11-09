@@ -1,6 +1,154 @@
+* {
+    padding:0px;
+    margin:0px;
+}
+
 .App {
+    width: 100%;
+    margin: auto 50px;
+}
+
+.Wrap {
+    border: 1px solid rgb(221, 221, 221);
     display: flex;
     flex-direction: row;
-    width: 90%;
+    flex-wrap: nowrap;
+}
+
+
+/*Contacts*/
+
+.ContactsWrap {
+    border: 1px solid rgb(221, 221, 221);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 600px;
+}
+
+.ContactsWrap .chats {
+    max-height: 450px;
+    overflow-y: scroll;
+}
+
+.ContactsWrap h2 span {
+    display: inline-block;
+    margin: 15px;
+    color: rgb(57, 147, 184);
+}
+
+.UserInfo {
+    background-color: rgb(245, 245, 245);
+}
+
+.UserInfo img {
+    width: 70px;
+}
+
+.UserInfo div {
+    display: flex;
+    align-items: center;
+}
+
+.UserInfo input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.ContactList {
+    border-bottom:1px solid rgb(221, 221, 221);
+}
+
+.ContactList div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.ContactList img {
+    display: inline;
+    width: 50px;
+}
+
+.ContactList .lastMassage {
+    padding-left: 50px;
+}
+
+
+/*Chat*/
+
+.placeholder {
     justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(221, 221, 221);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 4;
+    min-height: 600px;
+    max-height: 600px;
+}
+
+.ChatWrap {
+    border: 1px solid rgb(221, 221, 221);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 4;
+    min-height: 600px;
+    max-height: 600px;
+}
+
+.ChatWrap input[type=text] {
+    width: 90%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.ChatWrap input[type=submit] {
+    width: 10%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.ContactInfo {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    background-color: rgb(245, 245, 245);
+}
+
+.ContactInfo img {
+    width: 70px;
+
+}
+
+.conversation {
+    margin-right: 5px;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.conversation span {
+    font-size: 13px;
+}
+
+.inMessage {
+    padding: 5px;
+    display: inline-block;
+    color: white;
+    background-color: rgb(62, 65, 84);
+    border: 1px solid rgb(62, 65, 84);
+    border-radius: 20px;
+}
+
+.outMessage {
+    text-align: end;
 }

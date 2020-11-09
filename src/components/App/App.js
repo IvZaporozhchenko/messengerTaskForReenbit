@@ -229,16 +229,17 @@ class App extends Component {
 		}, 10000)
 	}
 
-
 	render() {
 		return (
 			<div className="App">
-				<ContactsWrap contacts={this.state.contacts}
-				              selectContact={this.selectContact}
-				/>
-				<ChatWrap contacts={this.state.contacts}
-				          sendMessage={this.sendMessage}
-				/>
+				<div className="Wrap">
+					<ContactsWrap contacts={this.state.contacts}
+					              selectContact={this.selectContact}
+					/>
+					<ChatWrap contacts={this.state.contacts}
+					          sendMessage={this.sendMessage}
+					/>
+				</div>
 			</div>
 		)
 	}

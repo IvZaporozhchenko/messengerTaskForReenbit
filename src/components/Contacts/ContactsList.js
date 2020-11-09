@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import avatar from "../../img/avatar.png"
 
 class ContactsList extends Component{
 	render() {
@@ -14,10 +15,22 @@ class ContactsList extends Component{
 			}
 		});
 
+
 		return (SORTED_AND_FILTERED_CONTACTS.map((contact) => {
-			return (
-				<div key={contact.id} onClick={this.props.selectContact.bind(this, contact.id)}>
-					{contact.contactName}
+			const date = contact.chatHistory[contact.chatHistory.length - 1].messageDate;
+				return (
+				<div className="ContactList" key={contact.id} onClick={this.props.selectContact.bind(this, contact.id)}>
+					<div>
+						<div>
+							<img src={avatar}/>
+							<h4>{contact.contactName}</h4>
+						</div>
+						<p>
+							{(date.min < 10) ? <span>{date.hh}:0{date.min} </span> : <span>{date.hh}:{date.min} </span>}
+							<span>{date.dd}/{date.mm}/{date.yy}</span>
+						</p>
+					</div>
+					<p className="lastMassage">{contact.chatHistory[contact.chatHistory.length - 1].messageText}</p>
 				</div>
 			)
 		}))

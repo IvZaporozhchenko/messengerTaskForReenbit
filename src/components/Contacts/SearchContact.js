@@ -11,8 +11,6 @@ class SearchContact extends Component {
 		this.props.searchContact(e.target.value);
 	}
 
-
-
 	render()
 	{
 		return (
