@@ -1,16 +1,19 @@
 import React from 'react';
 
 function ContactsList(props) {
-	props.contacts.sort((cont1, cont2) => {
-		const a = cont1.chatHistory[cont1.chatHistory.length - 1].messageDate,
-			b = cont2.chatHistory[cont2.chatHistory.length - 1].messageDate;
+	const SORTED_AND_FILTERED_CONTACTS = props.contacts.sort((contact1, contact2) => {
+		const a = contact1.chatHistory[contact1.chatHistory.length - 1].messageDate,
+			b = contact2.chatHistory[contact2.chatHistory.length - 1].messageDate;
 		return new Date(b.yy, b.mm, b.dd, b.hh, b.min) - new Date(a.yy, a.mm, a.dd, a.hh, a.min);
+	}).filter((contact) => {
+		if(props.searchedContact) {
+			return contact.contactName.toLocaleLowerCase().includes(props.searchedContact.toLowerCase());
+		} else {
+			return contact;
+		}
+
 	});
-		/*.filter((a) => {
-		console.log(a);
-		return a.contactName === "John";
-	});*/
-	return (props.contacts.map((contact) => {
+	return (SORTED_AND_FILTERED_CONTACTS.map((contact) => {
 		return (
 			<div key={contact.id}>
 				{contact.contactName}
