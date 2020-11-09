@@ -6,18 +6,37 @@ import MessageInput from "./MessageInput";
 
 class ChatWrap extends Component {
 	render() {
-		//console.log(selectedContact);
-		return (
-			<div>
-				<ContactInfo />
-				<Conversation selectedContact={this.props.contacts.find((contact) => {
-					return contact.selected === true;
-				})} />
-				<MessageInput />
-			</div>
-		)
+		if(Boolean(this.props.contacts.find((contact) => {return contact.selected === true}))) {
+			let selectedContact = this.props.contacts.find((contact) => {
+				return contact.selected === true;
+			})
+			return (
+				<div>
+					<ContactInfo selectedContact={selectedContact} />
+					<Conversation selectedContact={selectedContact}/>
+					<MessageInput sendMessage={this.props.sendMessage}/>
+				</div>
+			)
+		} else {
+			return (
+				<p>Select someone to chat with</p>
+			)
+		}
 	}
-
 }
+
+/*		if (Boolean(this.props.contacts.find((contact) => {
+			return contact.selected === true;
+		})))
+			return (
+				<div>
+					<ContactInfo/>
+					<Conversation selectedContact={this.props.contacts.find((contact) => {
+						return contact.selected === true;
+					})}/>
+					<MessageInput/>
+				</div>
+			)
+	}*/
 
 export default ChatWrap;

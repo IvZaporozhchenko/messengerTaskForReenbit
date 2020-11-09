@@ -4,7 +4,7 @@ class ContactInfo extends Component {
 	render() {
 		return (
 			<div>
-				<p>Contact Info</p>
+				<h2>{this.props.selectedContact.contactName}</h2>
 			</div>
 		)
 	}

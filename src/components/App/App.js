@@ -14,6 +14,7 @@ class App extends Component {
 		}
 
 		this.selectContact = this.selectContact.bind(this);
+		this.sendMessage = this.sendMessage.bind(this);
 	}
 
 	componentDidMount() {
@@ -33,7 +34,8 @@ class App extends Component {
 								mm: 11,
 								dd: 8,
 								hh: 12,
-								min: 56
+								min: 56,
+								sec: 0
 							}
 						},
 						{
@@ -44,7 +46,8 @@ class App extends Component {
 								mm: 11,
 								dd: 8,
 								hh: 13,
-								min: 0
+								min: 0,
+								sec: 0
 							}
 						},
 						{
@@ -55,7 +58,8 @@ class App extends Component {
 								mm: 11,
 								dd: 8,
 								hh: 13,
-								min: 1
+								min: 1,
+								sec: 0
 							}
 						}
 					]
@@ -74,7 +78,8 @@ class App extends Component {
 								mm: 11,
 								dd: 7,
 								hh: 14,
-								min: 30
+								min: 30,
+								sec: 0
 							}
 						},
 						{
@@ -85,7 +90,8 @@ class App extends Component {
 								mm: 11,
 								dd: 7,
 								hh: 14,
-								min: 35
+								min: 35,
+								sec: 0
 							}
 						}
 					]
@@ -104,7 +110,8 @@ class App extends Component {
 								mm: 11,
 								dd: 6,
 								hh: 15,
-								min: 56
+								min: 56,
+								sec: 0
 							}
 						},
 						{
@@ -115,19 +122,20 @@ class App extends Component {
 								mm: 11,
 								dd: 6,
 								hh: 17,
-								min: 0
+								min: 0,
+								sec: 0
 							}
 						},
 						{
 							messageType: "inMessage",
 							messageText: "I know",
-							messageTime: "17:20",
 							messageDate: {
 								yy:2020,
 								mm: 11,
 								dd: 6,
 								hh: 17,
-								min: 20
+								min: 20,
+								sec: 0
 							}
 						}
 					]
@@ -149,6 +157,29 @@ class App extends Component {
 		})
 	}
 
+	//Send Message
+	sendMessage(message) {
+		let newMessage, now = new Date(), updatedContacts;
+		newMessage = {
+				messageType: "outMessage",
+				messageText: message,
+				messageDate: {
+					yy: now.getFullYear(),
+					mm: now.getMonth() + 1,
+					dd: now.getDate(),
+					hh: now.getHours(),
+					min: now.getMinutes(),
+					sec: now.getSeconds()
+				}
+			};
+		updatedContacts = this.state.contacts.map(el => (el.selected === true ? Object.assign(el, {chatHistory : [...el.chatHistory, newMessage]}) : el));
+
+
+		this.setState({
+			contacts: updatedContacts
+		})
+	}
+
 
 	render() {
 		return (
@@ -156,7 +187,9 @@ class App extends Component {
 				<ContactsWrap contacts={this.state.contacts}
 				              selectContact={this.selectContact}
 				/>
-				<ChatWrap contacts={this.state.contacts}/>
+				<ChatWrap contacts={this.state.contacts}
+				          sendMessage={this.sendMessage}
+				/>
 			</div>
 		)
 	}
